@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>sharpen</groupId>
+  <artifactId>sharpenconfig</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>sharpenconfig</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <finalName>MEConfiguration.${project.artifactId}</finalName>
+	 <!--<finalName>${project.artifactId}-${project.version}</finalName>-->
+      <!--<finalName>${project.artifactId}</finalName>-->
+  </properties>
+
+    <repositories>
+        <repository>
+            <id>in-project</id>
+            <name>In Project Repo</name>
+            <url>file://${project.basedir}/sharpen.config/lib</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>sharpen</groupId>
+            <artifactId>sharpencore</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+  <build>
+   <directory>sharpen.config/target</directory>
+    <outputDirectory>sharpen.config/target/classes</outputDirectory>
+    <finalName>${finalName}</finalName>
+    <testOutputDirectory>sharpen.config/target/testcases</testOutputDirectory>
+    <sourceDirectory>sharpen.config/src</sourceDirectory>
+    <scriptSourceDirectory>sharpen.config/src</scriptSourceDirectory>
+    <!--<testSourceDirectory>sharpen.ui.tests/src</testSourceDirectory>-->
+    <resources>
+      <resource>
+        <directory>sharpen.config/src/resources</directory>
+      </resource>
+    </resources>
+    <!--<testResources>-->
+      <!--<testResource>-->
+        <!--<directory>sharpen.ui.tests/testcases</directory>-->
+      <!--</testResource>-->
+    <!--</testResources>-->
+
+  <plugins>
+
+	<plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>sharpen.config.MEConfiguration</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+	  
+	<executions>
+		<execution>
+		  <id>make-assembly</id> <!-- this is used for inheritance merges -->
+		  <phase>package</phase> <!-- bind to the packaging phase -->
+		  <goals>
+			<goal>single</goal>
+		  </goals>
+		</execution>
+    </executions>
+      </plugin>	
+  </plugins>
+ 
+</build>
+</project>
