@@ -4,7 +4,7 @@ import sharpen.core.Configuration;
 
 public class MEConfiguration extends Configuration {
 
-    MEConfiguration(String runtimeTypeName) {
+    public MEConfiguration(String runtimeTypeName) {
         super(runtimeTypeName);
 
         setUpPrimitiveMappings();
