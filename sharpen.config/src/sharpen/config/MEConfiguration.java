@@ -69,12 +69,6 @@ public class MEConfiguration extends Configuration {
         mapType("java.lang.Double", "double");
     }
 
-    @Override
-    protected void setUpAnnotationMappings() {
-        super.setUpAnnotationMappings();
-        mapType("com.drew.lang.annotations.Nullable", "JetBrains.Annotations.CanBeNull");
-    }
-
     private void setUpCollectionMappings() {
         // collection framework
         mapType("java.util.Collection", "System.Collections.ICollection");
